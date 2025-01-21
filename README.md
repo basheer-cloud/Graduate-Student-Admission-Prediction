@@ -71,13 +71,25 @@ The dataset includes the following features:
 ## Model Performance
 The following table summarizes the performance of different models used in this project:
 
-| Model                | R² Score | MAE   | RMSE  |
-|----------------------|----------|-------|-------|
-| Linear Regression    | 0.84     | 0.03  | 0.05  |
-| Decision Tree        | 0.80     | 0.04  | 0.06  |
-| Random Forest        | 0.86     | 0.02  | 0.04  |
+## Model Performance
+
+| Model               | Parameters                                           | MSE      | RMSE     | R² Score |
+|---------------------|-----------------------------------------------------|----------|----------|------------|
+| Linear Regression   | Default parameters                                  | 0.003705 | 0.060866 | 0.818843   |
+| Lasso               | alpha=0.1                                           | 0.015120 | 0.122964 | 0.260630   |
+| SVR                 | C=10, gamma='scale'                                 | 0.005675 | 0.075333 | 0.722489   |
+| Decision Tree       | max_depth=5, criterion='squared_error',             | 0.006486 | 0.080534 | 0.682846   |
+| KNN                 | n_neighbors=10                                      | 0.004463 | 0.066803 | 0.781779   |
+| Random Forest       | n_estimators=200, max_depth=10, random_state=42     | 0.004228 | 0.065026 | 0.793234   |
+| Voting Regressor    | Combination of Linear Regression, Lasso, SVR, etc.  | 0.004194 | 0.064762 | 0.794910   |
+| Stacking Regressor  | Combination of Linear Regression, Lasso, SVR, etc.  | 0.004195 | 0.064771 | 0.794849   |
 
 Visualizations of model performance and feature importance can be found in the notebook.
+
+- **Linear Regression** provides a good baseline with an R² Score of 0.818843.
+- **Lasso** underperforms relative to other models, with an R² Score of 0.260630.
+- **Voting Regressor** and **Stacking Regressor** achieve the best performance, both with an R² Score close to 0.7949.
+- **Random Forest** demonstrates strong performance with an R² Score of 0.793234 and RMSE of 0.065026.
 
 ## Contributing
 Contributions are welcome! To contribute:
